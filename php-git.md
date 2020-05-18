@@ -47,3 +47,12 @@ git checkout name
 ### Генерация ключей
 
 ssh-key
+
+### Слияние веток
+ 
+git merge <name-of-branch>
+
+### Игнорирование файлов и каталогов файл .gitignore
+
+*.pyc
+/tmp
