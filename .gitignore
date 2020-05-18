@@ -1,3 +1,8 @@
-tmp/
-**/*.pyc
-node_modulules
+*.pyc
+__pycache__
+`.pytest_cache
+venv/
+node_modules/
+package-lock.json
+.vscode
+.idea
