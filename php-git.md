@@ -47,3 +47,15 @@ git checkout name
 ### Генерация ключей
 
 ssh-key
+
+### Переход на комит или ветку
+
+git checkout <id-commit | name-of-branch>
+
+### Создание ветки
+
+git branch <name>
+
+
+
+ 
