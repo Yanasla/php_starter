@@ -16,3 +16,5 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by('id')
     serializer_class = CategorySerializer
     permission_classes = [permissions.AllowAny]
+    http_method_names = ['get', 'post']
+    
