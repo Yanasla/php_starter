@@ -38,11 +38,11 @@ git pull
 
 ### Создание ветки.
 
-git branch name
+git branch <name>
 
 ### Переход на ветку.
 
-git checkout name
+git checkout <name>
 
 ### Генерация ключей
 

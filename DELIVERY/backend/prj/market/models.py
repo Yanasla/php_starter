@@ -37,13 +37,25 @@ class Category(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-class Product(models.Model):
+class SubCategory(models.Model):
     name = models.CharField(max_length=250, default='')
-    image = models.ImageField(upload_to='product', null=True, blank=True)
     category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True, blank=True)
     
     def __str__(self):
         return '%s (%s)' % (self.name, self.category)
+    
+    class Meta:
+        verbose_name = 'SubCategory'
+        verbose_name_plural = 'SubCategory'
+        
+class Product(models.Model):
+    name = models.CharField(max_length=250, default='')
+    color = models.CharField(max_length=250, default='')
+    image = models.ImageField(upload_to='product', null=True, blank=True)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.SET_NULL, null=True, blank=True)
+    
+    def __str__(self):
+        return '%s (%s)' % (self.name, self.subcategory)
     
     class Meta:
         verbose_name = 'Product'
@@ -53,7 +65,12 @@ class Product(models.Model):
 class Store(models.Model):
     Provider = models.ForeignKey(Provider,on_delete=models.CASCADE, null=True, blank=True)
     Product = models.ForeignKey(Product,on_delete=models.CASCADE, null=True, blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price_TT = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    price_retail = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Store'
         verbose_name_plural = 'Stores'
