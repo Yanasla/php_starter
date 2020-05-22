@@ -1,5 +1,5 @@
 from django.contrib import admin
-from market.models import Provider, Consumer, Category, SubCategory, Product, Order, OrderProduct, Store
+from market.models import Provider, Consumer, Category, subcategory, Product, Order, OrderProduct, Store
 
 class ProviderAdmin(admin.ModelAdmin):
     pass
@@ -16,10 +16,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-class SubCategoryAdmin(admin.ModelAdmin):
+class subcategoryAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(subcategory, subcategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     pass

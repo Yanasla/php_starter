@@ -37,7 +37,7 @@ class Category(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-class SubCategory(models.Model):
+class subcategory(models.Model):
     name = models.CharField(max_length=250, default='')
     category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True, blank=True)
     
@@ -45,14 +45,14 @@ class SubCategory(models.Model):
         return '%s (%s)' % (self.name, self.category)
     
     class Meta:
-        verbose_name = 'SubCategory'
-        verbose_name_plural = 'SubCategory'
+        verbose_name = 'subcategory'
+        verbose_name_plural = 'subcategories'
         
 class Product(models.Model):
     name = models.CharField(max_length=250, default='')
     color = models.CharField(max_length=250, default='')
     image = models.ImageField(upload_to='product', null=True, blank=True)
-    subcategory = models.ForeignKey(SubCategory,on_delete=models.SET_NULL, null=True, blank=True)
+    subcategory = models.ForeignKey(subcategory,on_delete=models.SET_NULL, null=True, blank=True)
     
     def __str__(self):
         return '%s (%s)' % (self.name, self.subcategory)
@@ -69,7 +69,7 @@ class Store(models.Model):
     price_retail = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     def __str__(self):
-        return self.name
+        return self.Provider
 
     class Meta:
         verbose_name = 'Store'

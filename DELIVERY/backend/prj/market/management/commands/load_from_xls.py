@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from market.models import Category, SubCategory, Product
+from market.models import Category, subcategory, Product
 
 from prj.settings import DATA_DIR
 
@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Clear DB')
         Category.objects.all().delete()
-        SubCategory.objects.all().delete()
+        subcategory.objects.all().delete()
         Product.objects.all().delete()
 
         print('Start importing from excel %s'% DATA_DIR)
@@ -32,8 +32,8 @@ class Command(BaseCommand):
                 cat.name = id
                 cat.save()
             if sub_id != None:
-                print('Create new SubCategory')
-                scat = SubCategory()
+                print('Create new subcategory')
+                scat = subcategory()
                 scat.name = sub_id
                 scat.category = cat
                 scat.save()
