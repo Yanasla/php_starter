@@ -10,7 +10,7 @@ urlpatterns = [
     #path('v1/',include(router.urls)),
     path('v1/',include([
         path('generic/',include(router.urls)),
-        path('market',include('market.urls')
+        path('market/',include('market.urls')
         
     ])),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
