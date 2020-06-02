@@ -50,13 +50,12 @@ class subcategory(models.Model):
         
 class Product(models.Model):
     name = models.CharField(max_length=250, default='')
-    color = models.CharField(max_length=250, default='')
     image = models.ImageField(upload_to='product', null=True, blank=True)
     subcategory = models.ForeignKey(subcategory,on_delete=models.SET_NULL, null=True, blank=True)
-    
+
     def __str__(self):
         return '%s (%s)' % (self.name, self.subcategory)
-    
+
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -67,9 +66,6 @@ class Store(models.Model):
     Product = models.ForeignKey(Product,on_delete=models.CASCADE, null=True, blank=True)
     price_TT = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     price_retail = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-
-    def __str__(self):
-        return self.Provider
 
     class Meta:
         verbose_name = 'Store'

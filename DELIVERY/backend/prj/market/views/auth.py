@@ -11,24 +11,24 @@ class LoginRequestSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
 
+
 class AuthView(APIView):
     """
-    User Login.
+       User login.
     """
     @swagger_auto_schema(
         request_body = LoginRequestSerializer,
-        responses = {200: CommonResponceSerializer}
+        responses= { 200:  CommonResponceSerializer}
     )
     def post(self, request):
-        return Response(CommonResponceSerializer(
-            {'Status' : 0, 'message':'PERFEEEECT!!!!!!!'}).data)
+        return Response(CommonResponceSerializer({
+            'status': 0,
+            'message': 'Goooood'
+        }).data)
+
 
 from rest_framework.decorators import api_view
 
 @api_view()
 def hello(request):
-    return Response({"message":"hello"})
-
-
-    
-
+    return Response({"message": "hello"})
