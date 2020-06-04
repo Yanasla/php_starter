@@ -4,7 +4,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.urls import path, include
 from rest_framework import viewsets
-from market.views.auth import AuthView, hello
+from market.views.auth import AuthView
+#from market.views.auth import hello
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -31,8 +32,8 @@ urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
     path('v1/',include([
-    path('generic/',include(router.urls)),
-    path('market/',include('market.urls'))
+    path('viewsets/',include(router.urls)),
+    path('generic/',include('market.urls'))
     #path('userlogin',AuthView.as_view()),
     #path('hello',hello)
     ])),
